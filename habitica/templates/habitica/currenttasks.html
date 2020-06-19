@@ -1,0 +1,16 @@
+{% extends 'habitica/base.html' %}
+
+{% block content %}
+<h1> Here are your Tasks <u> {{ user.username }} </u> </h1>
+<ul>
+  {% for task in tasks %}
+  <li>
+    <a href="{% url 'viewtask' task.id %}">
+    {% if task.important %}<b>{% endif %}{{ task.title }}{% if task.important %}</b>{% endif %}
+    {% if task.memo %}-{{ task.memo }}{% endif %}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
